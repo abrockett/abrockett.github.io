@@ -1,77 +1,409 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!doctype html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>FlashSac</title>
-<script language="javascript">AC_FL_RunContent = 0;</script>
-<script src="AC_RunActiveContent.js" language="javascript"></script>
+  <meta charset="utf-8">
+  <title>Patient Self-Assessment of Communication</title>
+  <style>
+    .divTable{
+        display: table;
+        width: 100%;
+    }
+    .divTableRow {
+        display: table-row;
+    }
+    .divTableCellText {
+        border-bottom: 1px solid #999999;
+        border-right: 1px solid #999999;
+        display: table-cell;
+        padding: 3px 10px;
+        width: 70%;
+        background: #fff;
+        text-align: left;
+        vertical-align: middle;
+        /* line-height: 90px; */
+    }
+    .divTableCellRating {
+        /* border: 1px solid #999999; */
+        display: table-cell;
+        padding: 3px 10px;
+        width: 30%;
+    }
+    .nowrap  {
+        -webkit-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    }
+
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+    html, body {
+        width: 100%;
+        height: 100%;
+    }
+    body {
+        background: #ffffff;
+        font-family: 'Roboto', sans-serif;
+        display: flex;
+        padding: 30px;
+    }
+    .inline-radio-container {
+        background: #fff;
+        width: 100%;
+        margin: auto;
+        padding: 10px;
+        min-width: 320px;
+        max-width: 540px;
+        /* box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26); */
+        /* border-radius: 3px; */
+    }
+    group + group {
+        margin-top: 20px;
+    }
+    .inline-radio {
+        display: flex;
+        border-radius: 3px;
+        overflow: hidden;
+        border: 1px solid #b6b6b6;
+    }
+    .inline-radio div {
+        position: relative;
+        flex: 1;
+    }
+    .inline-radio input {
+        width: 100%;
+        height: 40px;
+        opacity: 0;
+    }
+    .inline-radio label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: #b6b6b6;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        border-right: 1px solid #b6b6b6;
+    }
+    .inline-radio div:last-child label {
+        border-right: 0;
+    }
+    .inline-radio input:checked + label {
+        background: #0000ee;
+        font-weight: 500;
+        color: #fff;
+    }
+    #calculateButton {
+        background-color: #0000ee;
+        padding: .5em;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 16px;
+        border: none;
+        margin-top: 20px;
+    }
+    #results {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+  </style>
 </head>
-<body bgcolor="#ffffff">
-<!--url's used in the movie-->
-<a href="FSCommand:quit"></a>
-<!--text used in the movie-->
-<!--
-5
-5
-5
-5
-5
-5
-5
-5
-5
-100
-100
-100
-100
-5
-5
-5
-5
-5
-5
-5
-5
-5
-100
-100
-100
-100 
--->
-<!-- saved from url=(0013)about:internet -->
-<script language="javascript">
-	if (AC_FL_RunContent == 0) {
-		alert("This page requires AC_RunActiveContent.js.");
-	} else {
-		AC_FL_RunContent(
-			'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0',
-			'width', '800',
-			'height', '600',
-			'src', 'FlashSac',
-			'quality', 'high',
-			'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
-			'align', 'middle',
-			'play', 'true',
-			'loop', 'true',
-			'scale', 'showall',
-			'wmode', 'window',
-			'devicefont', 'false',
-			'id', 'FlashSac',
-			'bgcolor', '#ffffff',
-			'name', 'FlashSac',
-			'menu', 'true',
-			'allowFullScreen', 'false',
-			'allowScriptAccess','sameDomain',
-			'movie', 'FlashSac',
-			'salign', ''
-			); //end AC code
-	}
-</script>
-<noscript>
-	<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="800" height="600" id="FlashSac" align="middle">
-	<param name="allowScriptAccess" value="sameDomain" />
-	<param name="allowFullScreen" value="false" />
-	<param name="movie" value="FlashSac.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" />	<embed src="FlashSac.swf" quality="high" bgcolor="#ffffff" width="800" height="600" name="FlashSac" align="middle" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
-	</object>
-</noscript>
+
+<body>
+    <div id="assessment" class="divTable" style="width: 100%;">
+        <div class="divTableRow">
+            <div class="divTableCellText" style="font-size:24px;line-height:30px;border:none">
+                <b>PATIENT SELF-ASSESSMENT OF COMMUNICATION</b>
+            </div>
+        </div>
+
+        <div class="divTableRow">
+                <div class="divTableCellText" style="padding-top:40px;border:none">
+                    <b>Name: ________________________________ Date: _________________</b>
+                </div>
+        </div>
+
+        <div class="divTableRow">
+            <div class="divTableCellText" style="border:none;vertical-align:top">
+                <p><b>Instructions:</b>&nbsp;
+                The purpose of this form is to identify problems your hearing loss
+                may be causing you. If you wear hearing aids, answer the questions
+                according to how you communicate <i>when the hearing aids are in use.</i></p>
+                <p>One of the five ratings on the right should be assigned to each
+                of the statements below.</p>
+                </p>
+            </div>
+            <div class="divTableCellRating">
+                <p>(1) Almost never (or never)</p>
+                <p>(2) Occasionally (about 1/4 of the time)</p>
+                <p>(3) About 1/2 the time</p>
+                <p>(4) Frequently (about 3/4 of the time)</p>
+                <p>(5) Practically always (or always)</p>
+            </div>
+        </div>
+
+        <div class="divTableRow">
+            <div class="divTableCellText">
+                <b>Do you experience communication difficulties in sitations when speaking
+                with one other person?</b>
+                &nbsp;(at home, at work, in a social situation, with a waitress,
+                a store clerk, with a spouse, boss, etc.)
+            </div>
+            <div class="divTableCellRating inline-radio-container">
+                <group class="inline-radio">
+                    <div><input type="radio" name="question0" value="1"><label>1</label></div>
+                    <div><input type="radio" name="question0" value="2"><label>2</label></div>
+                    <div><input type="radio" name="question0" value="3" checked><label>3</label></div>
+                    <div><input type="radio" name="question0" value="4" ><label>4</label></div>
+                    <div><input type="radio" name="question0" value="5"><label>5</label></div>
+                </group>
+            </div>
+        </div>
+
+        <div class="divTableRow">
+            <div class="divTableCellText">
+                <b>Do you experience communication difficulties while watching
+                TV and in various types of entertainment?</b>
+                &nbsp;(movies, radio, plays, night clubs, musical entertainment, etc.)
+            </div>
+            <div class="divTableCellRating inline-radio-container">
+                <group class="inline-radio">
+                    <div><input type="radio" name="question1" value="1"><label>1</label></div>
+                    <div><input type="radio" name="question1" value="2"><label>2</label></div>
+                    <div><input type="radio" name="question1" value="3" checked><label>3</label></div>
+                    <div><input type="radio" name="question1" value="4"><label>4</label></div>
+                    <div><input type="radio" name="question1" value="5"><label>5</label></div>
+                </group>
+            </div>
+        </div>
+
+        <div class="divTableRow">
+            <div class="divTableCellText">
+                <b>Do you experience communication difficulties in situations
+                when conversing with a small group of several persons?</b>
+                &nbsp;(with friends or families, co-workers, in meetings
+                or casual conversations, over dinner or while playing cards, etc.)
+            </div>
+            <div class="divTableCellRating inline-radio-container">
+                <group class="inline-radio">
+                    <div><input type="radio" name="question2" value="1"><label>1</label></div>
+                    <div><input type="radio" name="question2" value="2"><label>2</label></div>
+                    <div><input type="radio" name="question2" value="3" checked><label>3</label></div>
+                    <div><input type="radio" name="question2" value="4"><label>4</label></div>
+                    <div><input type="radio" name="question2" value="5"><label>5</label></div>
+                </group>
+            </div>
+        </div>
+
+        <div class="divTableRow">
+            <div class="divTableCellText">
+                <b>Do you experience communication difficulties when you are in an unfavorable
+                listening environment? </b> (at a noisy party, where there is background music,
+                when riding in an auto or bus, when someone whispers or talks from across the room, etc.)
+            </div>
+            <div class="divTableCellRating inline-radio-container">
+                <group class="inline-radio">
+                    <div><input type="radio" name="question3" value="1"><label>1</label></div>
+                    <div><input type="radio" name="question3" value="2"><label>2</label></div>
+                    <div><input type="radio" name="question3" value="3" checked><label>3</label></div>
+                    <div><input type="radio" name="question3" value="4"><label>4</label></div>
+                    <div><input type="radio" name="question3" value="5"><label>5</label></div>
+                </group>
+            </div>
+        </div>
+
+        <div class="divTableRow">
+            <div class="divTableCellText">
+                <b>How often do you experience communication difficulties in the situation where
+                  you most want to hear better? </b>
+            </div>
+            <div class="divTableCellRating inline-radio-container">
+                <group class="inline-radio">
+                    <div><input type="radio" name="question4" value="1"><label>1</label></div>
+                    <div><input type="radio" name="question4" value="2"><label>2</label></div>
+                    <div><input type="radio" name="question4" value="3" checked><label>3</label></div>
+                    <div><input type="radio" name="question4" value="4"><label>4</label></div>
+                    <div><input type="radio" name="question4" value="5"><label>5</label></div>
+                </group>
+            </div>
+        </div>
+
+            <div class="divTableRow">
+                <div class="divTableCellText">
+                    <b>Do you feel that any difficulty with your hearing negatively
+                      affects or hampers your personal or social life? </b>
+                </div>
+                <div class="divTableCellRating inline-radio-container">
+                    <group class="inline-radio">
+                        <div><input type="radio" name="question5" value="1"><label>1</label></div>
+                        <div><input type="radio" name="question5" value="2"><label>2</label></div>
+                        <div><input type="radio" name="question5" value="3" checked><label>3</label></div>
+                        <div><input type="radio" name="question5" value="4"><label>4</label></div>
+                        <div><input type="radio" name="question5" value="5"><label>5</label></div>
+                    </group>
+                </div>
+            </div>
+
+            <div class="divTableRow">
+                <div class="divTableCellText">
+                    <b>How often do others seem to be concerned or annoyed or suggest that
+                      you have a hearing problem?</b>
+                </div>
+                <div class="divTableCellRating inline-radio-container">
+                    <group class="inline-radio">
+                        <div><input type="radio" name="question6" value="1"><label>1</label></div>
+                        <div><input type="radio" name="question6" value="2"><label>2</label></div>
+                        <div><input type="radio" name="question6" value="3" checked><label>3</label></div>
+                        <div><input type="radio" name="question6" value="4"><label>4</label></div>
+                        <div><input type="radio" name="question6" value="5"><label>5</label></div>
+                    </group>
+                </div>
+            </div>
+
+            <div class="divTableRow">
+                <div class="divTableCellText">
+                    <b>Does any problem or difficulty with your hearing worry, annoy or upset you?</b>
+                </div>
+                <div class="divTableCellRating inline-radio-container">
+                    <group class="inline-radio">
+                        <div><input type="radio" name="question7" value="1"><label>1</label></div>
+                        <div><input type="radio" name="question7" value="2"><label>2</label></div>
+                        <div><input type="radio" name="question7" value="3" checked><label>3</label></div>
+                        <div><input type="radio" name="question7" value="4"><label>4</label></div>
+                        <div><input type="radio" name="question7" value="5"><label>5</label></div>
+                    </group>
+                </div>
+            </div>
+
+            <div class="divTableRow">
+                <div class="divTableCellText">
+                    <b>How often does your hearing negatively affect your enjoyment of life?</b>
+                </div>
+                <div class="divTableCellRating inline-radio-container">
+                    <group class="inline-radio">
+                        <div><input type="radio" name="question8" value="1"><label>1</label></div>
+                        <div><input type="radio" name="question8" value="2"><label>2</label></div>
+                        <div><input type="radio" name="question8" value="3" checked><label>3</label></div>
+                        <div><input type="radio" name="question8" value="4"><label>4</label></div>
+                        <div><input type="radio" name="question8" value="5"><label>5</label></div>
+                    </group>
+                </div>
+            </div>
+
+            <div class="divTableRow">
+                <div class="divTableCellText">
+                    <b>Overall, how satisfied are you with your hearing aids?</b>
+                </div>
+                <div class="divTableCellRating inline-radio-container">
+                    <group class="inline-radio">
+                        <div><input type="radio" name="question9" value="1"><label><h6>Not</h6></label></div>
+                        <div><input type="radio" name="question9" value="2"><label><h6>Slightly</h6></label></div>
+                        <div><input type="radio" name="question9" value="3" checked><label><h6>Somewhat</h6></label></div>
+                        <div><input type="radio" name="question9" value="4"><label><h6>Mostly</h6></label></div>
+                        <div><input type="radio" name="question9" value="5"><label><h6>Very</h6></label></div>
+                    </group>
+                </div>
+            </div>
+
+            <div class="divTableRow">
+                <div class="divTableCellText">
+                    <b>On average, how much of the time do you wear your hearing aids?</b>
+                </div>
+                <div class="divTableCellRating inline-radio-container">
+                    <group class="inline-radio">
+                        <div><input type="radio" name="question10" value="1"><label><h6>None</h6></label></div>
+                        <div><input type="radio" name="question10" value="2"><label><h6>A little</h6></label></div>
+                        <div><input type="radio" name="question10" value="3" checked><label><h6>Some</h6></label></div>
+                        <div><input type="radio" name="question10" value="4"><label><h6>Most</h6></label></div>
+                        <div><input type="radio" name="question10" value="5"><label><h6>All</h6></label></div>
+                    </group>
+                </div>
+            </div>
+
+
+        <div class="divTableRow">
+            <button id="calculateButton">Calculate Score</button>
+        </div>
+        </br>
+        <div id="results1">
+        </div>
+        <div id="results2">
+        </div>
+        <div id="results3">
+        </div>
+        <div id="results4">
+        </div>
+
+    </div>
+    <script>
+        const calculateButton = document.getElementById("calculateButton");
+        calculateButton.addEventListener("click", showResults);
+        const resultsContainer1 = document.getElementById("results1");
+        const resultsContainer2 = document.getElementById("results2");
+        const resultsContainer3 = document.getElementById("results3");
+        const resultsContainer4 = document.getElementById("results4");
+        const answerContainers = assessment.querySelectorAll('.inline-radio-container');
+
+
+        function showResults() {
+          showResults1();
+          showResults2();
+          showResults3();
+          showResults4();
+        }
+
+        function showResults1() {
+          let total = 0;
+          for (let i = 0; i < 10; i++) {
+            let answerContainer = answerContainers[i];
+            let selector = 'input[name=question'+i+']:checked';
+            let valueSelected = answerContainer.querySelector(selector).value;
+            total = total + Number(valueSelected);
+          }
+          resultsContainer1.innerHTML = "Total score (all questions): " + total;
+        }
+
+        function showResults2() {
+          let total = 0;
+          for (let i = 0; i < 5; i++) {
+            let answerContainer = answerContainers[i];
+            let selector = 'input[name=question'+i+']:checked';
+            let valueSelected = answerContainer.querySelector(selector).value;
+            total = total + Number(valueSelected);
+          }
+          resultsContainer2.innerHTML = "Activity Limitation (Q 1-5): " + total;
+        }
+
+        function showResults3() {
+          let total = 0;
+          for (let i = 5; i < 9; i++) {
+            let answerContainer = answerContainers[i];
+            let selector = 'input[name=question'+i+']:checked';
+            let valueSelected = answerContainer.querySelector(selector).value;
+            total = total + Number(valueSelected);
+          }
+          resultsContainer3.innerHTML = "Participation Restriction (Q 6-9): " + total;
+        }
+
+        function showResults4() {
+          let satisfactionLabels = ["not", "slightly", "somewhat", "mostly", "very"];
+          let satisfactionContainer = answerContainers[9];
+          let satisfactionSelector = 'input[name=question9]:checked';
+          let satisfactionValue = satisfactionContainer.querySelector(satisfactionSelector).value;
+
+          let timeLabels = ["none", "a little", "some", "most", "all"];
+          let timeContainer = answerContainers[10];
+          let timeSelector = 'input[name=question10]';
+          let timeValue = timeContainer.querySelector(timeSelector).value;
+          resultsContainer4.innerHTML = "On average, I wear my hearing aids " +
+              timeLabels[timeValue-1] + " of the time, and I am " +
+              satisfactionLabels[satisfactionValue-1] + " satisfied with their performance."
+        }
+    </script>
 </body>
 </html>
