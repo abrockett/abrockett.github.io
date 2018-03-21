@@ -398,7 +398,7 @@
 
           let timeLabels = ["none", "a little", "some", "most", "all"];
           let timeContainer = answerContainers[10];
-          let timeSelector = 'input[name=question10]';
+          let timeSelector = 'input[name=question10]:checked';
           let timeValue = timeContainer.querySelector(timeSelector).value;
           resultsContainer4.innerHTML = "On average, I wear my hearing aids " +
               timeLabels[timeValue-1] + " of the time, and I am " +
